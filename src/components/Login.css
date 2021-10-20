@@ -1,0 +1,127 @@
+.login-container{
+    width: 46vw;
+    height: 65vh;
+    display: flex;
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-60%);
+    border-radius: 10px;
+    overflow: hidden;
+}
+.login-container__left{
+    background-color: #DFE0E2;
+    width: 50%;
+    position: relative;
+}
+
+.login-left{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    color: #0070a9;
+    text-align: center;
+    font-size: 1.6rem;
+    font-style: oblique;
+    letter-spacing: 1.1;
+    width: 100%;
+}
+.login-container__left img{
+    margin-bottom: 1rem;
+    width: 12rem;
+}
+.login-container__right{
+    background-color: white;
+    width: 50%;
+    padding: 4rem 2rem;
+}
+.login-container__right input[type=text],.login-container__right input[type=password]{
+    border-radius: 30px !important;
+   
+    padding: 1.5rem 1rem;
+    margin-bottom: 1rem;
+}
+.register-container__right{
+    background-color: white;
+    width: 70%;
+    padding: 4rem 2rem;
+}
+.login__head{
+    text-align: center;
+    font-size: 1.4rem;
+    color: #0070a9  ;
+}
+.login__button{
+    background-color: #4E73DF;
+    border: none;
+    color: white;
+    outline: none;
+    padding: 0.9rem 0;
+    width: 100%;
+    margin-top: 1.4rem;
+    font-size: 0.9rem;
+    border-radius: 30px;
+}
+.login__button:hover{
+    background-color: #325ddf;
+}
+.login__button-google{
+    background-color: #EA4335;
+    border: none;
+    color: white;
+    outline: none;
+    padding: 0.9rem 0;
+    width: 100%;
+    margin-top: .8rem;
+    font-size: 0.9rem;
+    border-radius: 30px;
+}
+.login__button-google:hover{
+    background-color: #e62817;
+}
+.login__button-facebook{
+    background-color: #3B5998;
+    border: none;
+    color: white;
+    outline: none;
+    padding: 0.9rem 0;
+    width: 100%;
+    margin-top: .4rem;
+    font-size: 0.9rem;
+    border-radius: 30px;
+}
+.register__button{
+    background-color: #e04242;
+    border: none;
+    color: white;
+    outline: none;
+    padding: 0.9rem 0;
+    width: 100%;
+    margin-top: .4rem;
+    font-size: 0.9rem;
+    border-radius: 30px;
+    
+}
+.login__button-facebook:hover{
+    background-color: #2750aa;
+}
+.myLoginContainer{
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    background-color: rgba(61,99,210,.8);
+}
+.myRegisterContainer{
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    background-color: rgba(255, 120, 90, 0.8);
+}
+.custom-link{
+    display: inline;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    font-size: 0.9rem;
+}

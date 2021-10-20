@@ -1,0 +1,13 @@
+.list-item__header{
+    margin-top: 40px;
+    text-align: center;
+    margin-bottom: 60px;
+}
+.list-item__header::after{
+    content: "";
+    display: block;
+    background-color: #8BC34A;
+    width: 300px;
+    height: 2px;
+    margin: 9px auto;
+}

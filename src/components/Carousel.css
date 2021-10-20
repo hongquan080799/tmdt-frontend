@@ -1,0 +1,31 @@
+.carousel-item img{
+    width: 100%;
+}
+.myCarousel__more img{
+    width: 100%;
+}
+
+.myCarousel{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+.myCarousel .carousel{
+    width: 70%;
+}
+.myCarousel__more{
+    width: 29%;
+}
+.news__details{
+    margin-bottom: 0.2rem;
+}
+.news__details img{
+    width: 23%;
+    border: 1px solid #808080;
+    border-radius: 5px;
+}
+.news__more{
+    color: #0a1ed4;
+    cursor: pointer;
+}

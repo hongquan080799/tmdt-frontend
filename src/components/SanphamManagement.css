@@ -1,0 +1,79 @@
+.tourmn__title{
+    font-size: 1.2rem;
+    color: #474747;
+}
+.tourmn{
+    color: #474747;
+}
+.tourmn__head{
+    display: flex;
+    justify-content: space-between;
+}
+.tourmn__table{
+    width: 100%;
+    height: 80vh;
+    overflow: scroll;
+}
+.card-header{
+    display: flex;
+    justify-content: space-between;
+    
+}
+.card-header p{
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+}
+.input-label{
+    margin: 0;
+    padding: 0;
+    margin-bottom: 2px;
+}
+.card-header p:hover{
+    color: tomato;
+}
+.form-input{
+    width: 80%;
+    margin: auto;
+    height: 80vh;
+    overflow: scroll;
+}
+.input-img{
+    width: 100%;
+    cursor: pointer;
+}
+.custom-file_input{
+    display: none;
+}
+#file-input{
+    display: none;
+    cursor: pointer;
+}
+.btn-input{
+    width: 8rem;
+    margin-right: 1.5rem;
+}
+.cancelImg{
+    background: tomato;
+    display: inline-block;
+    color:white;
+    padding: 0 7px;
+    border-radius: 20px;
+    position: absolute;
+    top: 0%;
+    right: 0%;
+    transform: translateX(-50%) translateY(-30%)
+}
+.cancelImg:hover{
+    background: rgb(245, 76, 46);
+    cursor: pointer;
+}
+.myPictureContainer{
+    position: relative;
+}
+.navigation-icon{
+    background-color: rgb(0, 153, 20) !important;
+    border-radius: 5px;
+    width: 25px;
+    height: 25px;
+}

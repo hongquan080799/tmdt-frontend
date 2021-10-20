@@ -1,0 +1,132 @@
+.admin{
+    display: flex;
+}
+.playground{
+    background-color:#F8F9FC;
+    width: 86vw;
+    height: 100vh;
+}
+.dashboard{
+    background-color : #254EC0;
+    opacity: 0.8;
+    min-width: 14vw;
+    height: 100vh;
+    color: white;
+    position: relative;
+}
+.dashboard__admin-icon{
+    font-size: 1.9rem;
+    margin-right: .2rem;
+}
+.dashboard__admin{
+    text-align: center;
+    margin-top: .6rem;
+    font-size: 1.1rem;
+}
+
+.dashboard__item{
+    margin-top: 1.4rem;
+    margin-left: 10%;
+    font-size: 1rem;
+    color: #c0c0c0;
+    cursor: pointer;
+}
+.dashboard__item:hover{
+    color: white;
+    letter-spacing: 0.1px;
+}
+.active{
+    color:white;
+    margin-bottom: 1.4rem;
+}
+.dashboard__utils{
+    background-color: rgba(255, 255, 255, 0.2);
+    position: absolute;
+    left: 50%;
+    bottom: 20%;
+    padding: 0.6rem 1.1rem;
+    font-size: 1.1rem;
+    transform: translate(-50%);
+
+    border-radius: 50%;
+}
+.dashboard__utils:hover{
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.4);
+}
+.dashboard__item-icon{
+    font-size: 1.2rem ;
+    margin-right: 2%;
+}
+.hr-custom{
+    border-top: 1px solid #c0c0c0;
+    width: 90%;
+    margin: auto;
+}
+.playground__top{
+    background-color: white;
+    height: 7vh;
+    box-shadow: 0 1px 20px 0 rgba(0, 0, 0, 0.19);   
+    line-height: 7vh;
+    display: flex;
+    justify-content: space-between;
+}
+.playground__top__header-icon{
+    font-size: 1.7rem;
+    margin-right: 0.4rem;
+}
+.playground__top__header{
+    color: #254EC0;
+    margin-left: 1.5rem;
+    font-size: 1.2rem;
+}
+.dashboard-on{
+    margin-left: -9vw;
+    transition: all 0.4s;
+}
+.dashboard__item-on{
+    margin-left:11vw;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    transform: scale(1.2);
+    transition: none;
+}
+.dashboard__admin-on{
+    margin-left:9vw;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    transform: scale(1.2);
+    transition: none;
+}
+.dashboard__utils-on{
+    background-color: rgba(255, 255, 255, 0.2);
+    position: absolute;
+    left: 80%;
+    bottom: 20%;
+    padding: 0.6rem 1.1rem;
+    font-size: 1.1rem;
+    transform: translate(-50%);
+    border-radius: 50%;
+    cursor: pointer;
+}
+.playground-on{
+    width: 95vw;
+}
+.playground__user-img img{
+    height: 5vh;
+    border-radius: 50%;
+    margin-left: 0.3vw;
+}
+.playground__user{
+    margin-right: 1.3vw;
+}
+.playground__user-name{
+    color: #6e6a6a;
+    font-size: 1rem;
+}
+.find-admin{
+   display: flex;
+   align-items: center;
+   height: 100%;
+   margin-right: 50%;
+}

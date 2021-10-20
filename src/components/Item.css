@@ -1,0 +1,52 @@
+.btn-addCart{
+    width: 100%;
+    background-color: #8BC34A;
+    color: white;
+    border: none;
+    padding: 10px 0;
+    transition: 0.5s all;
+
+}
+.btn-addCart:hover{
+    color:#8BC34A;
+    background-color: white;
+    border: 0px solid #8BC34A;
+    border-bottom: none;
+}
+.myItem{
+    padding: 30px 0px;
+    transition: all 0.5s;
+}
+.page-link{
+    color: #448000 !important;
+}
+.card {
+    margin: 0 auto; /* Added */
+    float: none; /* Added */
+    
+}
+.my-card-body{
+    height: 200px;
+    transition: all .3s;
+}
+.myItem:hover{
+    transform: scale(1.01);
+}
+.myItem:hover .image{
+    cursor: pointer;
+    color: #448000;
+    transform: scale(1.05);
+}
+.myItem:hover .my-card-body{
+    cursor: pointer;
+    color: #448000;
+}
+.image img{
+    width: 100%;
+}
+.card{
+    overflow: hidden;
+}
+.image{
+    transition: all 0.4s;
+}

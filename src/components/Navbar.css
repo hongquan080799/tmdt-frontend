@@ -1,0 +1,33 @@
+.navbar-nav{
+    margin-right: 40px;
+}
+.search{
+    max-width: 36%;
+    margin-left: 10px;
+
+}
+.logo{
+    width: 40px;
+    margin: 0 15px;
+}
+.search{
+    position: relative;
+    z-index: 1;
+}
+.searchBox{
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    background-color: #c7c7c7;
+    top: 50px;
+    border-radius: 10px;
+    max-height: 400px;    
+    overflow: scroll;
+}
+
+@media (max-width: 574px){
+ 
+    .search{
+        width: 65%;
+    }
+    }

@@ -1,0 +1,83 @@
+.shoppingCart{
+    margin-top: 30px;
+    height: 70vh;
+}
+.table-cart td{
+    vertical-align: middle;
+    font-size: 16px;
+    padding: 20px 10px;
+}
+.table-cart{
+    margin-top: 20px;
+    color: #4d4c4c;
+    overflow:scroll;
+}
+.deleteCart{
+    transition: all 0.2s;
+    width: 20px
+}
+
+.deleteCart:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}
+.cart-header{
+    margin-top: 10px;
+    font-size: 22px;
+    letter-spacing: 2px;
+}
+.shoppingCart_detail-address{
+    margin-top: 60px;
+    background: white;
+    border-radius: 15px;
+    box-shadow:  0 2px 5px 0 rgba(0, 0, 0, 0.19);
+    min-height: 15vh;
+    padding: 17px 10px;
+}
+.shoppingCart{
+    padding: 0 20px;
+}
+.shipTo{
+    font-size: 0.95rem;
+    border-bottom: 1px solid #e6e4e4;
+}
+.shipTo p{
+    margin-bottom: 3px;
+}
+.shipTo__change{
+    text-decoration: underline;
+    cursor: pointer;
+}
+.shopingCart_detail-totalPrice{
+    margin-top: 20px;
+    background: white;
+    border-radius: 15px;
+    box-shadow:  0 2px 5px 0 rgba(0, 0, 0, 0.19);
+    min-height: 22vh;
+    padding: 5px 10px;
+}
+.totalPrice{
+    font-size: 1.5rem;
+}
+.orderBtn{
+    margin-top: 10px;
+    width: 100%;
+}
+.deleteDC{
+    cursor: pointer;
+    background-color: tomato;
+    padding: 0 7px;
+    color: white;
+    border-radius: 40px;
+    transition: 0.2s all;
+}
+.deleteDC:hover{
+    transform: scale(1.1);
+}
+.notdeleteDC{
+    cursor: pointer;
+    background-color: rgb(71, 120, 255);
+    padding: 0 7px;
+    color: white;
+    border-radius: 40px;
+}

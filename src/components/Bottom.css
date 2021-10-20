@@ -1,0 +1,25 @@
+.bottom{
+    margin-top: 50px;
+    background-color: #575c56;
+    color: white;
+    padding-top: 50px;
+    padding-bottom: 0px;
+}
+footer{
+    background-color: #2c302b;
+    padding: 10px 0;
+}
+.contact{
+    font-size: 28px;
+}
+.contact-1 i{
+    font-size: 20px;
+}
+.contact i{
+    margin: 0 6px;
+}
+.section::before{
+    font-family: FontAwesome;
+    content: "\f105";
+    margin-right: 8px;
+}

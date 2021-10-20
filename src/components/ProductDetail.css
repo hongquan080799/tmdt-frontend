@@ -1,0 +1,27 @@
+
+.toggle-nav{
+    margin-top: 30px;
+}
+
+.tab-content{
+    margin-top: 20px;
+    max-height: 60vh;
+    overflow: scroll;
+}
+.nav-link{
+    color: #249f66;
+}
+.nav-link:hover{
+    color: #4d4c4c;
+}
+.productDetail{
+    margin-top: 30px;
+    color: #4d4c4c;
+    min-height: 120vh;
+}
+.navi-icon{
+    background-color: rgb(0, 153, 20) !important;
+    border-radius: 5px;
+    width: 30px;
+    height: 30px;
+}
