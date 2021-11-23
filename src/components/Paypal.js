@@ -21,6 +21,8 @@ export default function Paypal(props) {
                 })
             },
             onApprove:async (data,actions)=>{
+                console.log('data')
+                console.log(data)
                 const order = await actions.order.capture()
                 console.log(order);
                 props.paymentStatus(true);

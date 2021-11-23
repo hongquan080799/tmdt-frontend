@@ -6,6 +6,7 @@ import * as cartApi from '../api/GiohangApi'
 import * as userApi from '../api/UserApi'
 import * as donhangApi from '../api/DonhangApi'
 import * as emailUtils from '../utils/SendEmail'
+import { getSignature } from '../utils/Algorithm'
 import Paypal from './Paypal'
 import {useHistory} from 'react-router-dom'
 export default function Cart() {
@@ -276,7 +277,7 @@ export default function Cart() {
         alert('Payment failed !')
     }
     const handleSubmitOrder = async ()=>{
-        if(thanhtoan == 0 && !checkout){
+        if(thanhtoan == 1 && !checkout){
             alert('Please by via Paypal')
             return
         }
@@ -284,6 +285,7 @@ export default function Cart() {
             if(sp.isCheck)
             return {
                 masp:sp.masp,
+                tensp:sp.tensp,
                 soluong:sp.soluong,
                 dongia:sp.gia - sp.gia * sp.khuyenmai,
             }
@@ -293,16 +295,23 @@ export default function Cart() {
             httt:Number(thanhtoan),
             diachi:getShipAddress()
         }
+        if(thanhtoan == 2){
+            const orderId = 'DH' + new Date().getTime()
+            const res = await getSignature(customOrder, getPrice(), orderId)
+            window.location.href = res.payUrl;
+            return
+            
+        }
         try {
 
             // const ghnResponse = await ghnApi.getOrderGHN(order, state?.user, getShipAddressToGHN(), getPrice())
             // customOrder.madhGhn = ghnResponse?.data?.order_code
-
             await donhangApi.order(customOrder)
             alert('Order successfully !!!')
             const myMessage = emailUtils.getMessageOrder(state?.user, order?.listSP, getShipAddress)
 
             emailUtils.sendEmail(myMessage, state?.user)
+            
 
         } catch (error) {
             alert('Order failed !!! ' + error.data.message)
@@ -513,11 +522,12 @@ export default function Cart() {
                                         <tr>
                                             <td>Thanh toán</td>
                                             <td colSpan="2"><select className="custom-select my-1 mr-sm-2" onChange={(e)=>setThanhtoan(e.target.value)}>
-                                              <option value={1}>Tiền mặt</option>
-                                              <option value={0}>Online</option>
+                                              <option value={0}>Tiền mặt</option>
+                                              <option value={1}>Paypal</option>
+                                              <option value={2}>Momo</option>
                                             </select></td>
                                         </tr>
-                                        {thanhtoan == 0?<tr>
+                                        {thanhtoan == 1?<tr>
                                             <Paypal paymentStatus={paymentStatus} tongtien = {getPrice()}/>
                                         </tr>:''}
                                     </table>
