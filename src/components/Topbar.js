@@ -6,6 +6,9 @@ import { getUser } from '../api/UserApi'
 import { UserContext } from '../context/UserContext'
 import { getNumCart } from '../api/GiohangApi'
 import MessengerCustomerChat from 'react-messenger-customer-chat';
+import {NotificationContainer, NotificationManager} from 'react-notifications';
+import 'react-notifications/lib/notifications.css';
+import {db} from '../firebase'
 export default function Topbar() {
     const [state,setState] = useContext(UserContext)
     const [open,setOpen] = useState(false)
@@ -20,13 +23,23 @@ export default function Topbar() {
             }
             console.log(myState)
             await setState(myState)
+            
               
 
         } catch (error) {
             console.log(error)
         }
     }
+    // const readData = ()=>{
+    //     db.collection('voucher').orderBy('timestamp','desc').onSnapshot(snapshot =>{
+    //         const res = snapshot.docs.map(doc => ({id:doc.id,data:doc.data()}));
+    //         NotificationManager.info('Your have received a voucher discount ' + res[0].data.discount * 100 + ' % of the order', 'Notification for your');
+    //         console.log(res)
+    //     })
+
+    // }
     useEffect(async ()=>{
+        //readData()
         await getUserInfo()
     },[])
     const logout = ()=>{
@@ -69,6 +82,7 @@ export default function Topbar() {
                 pageId="575303299345434"
                 appId="2594387300854202"
             />
+            <NotificationContainer/>
             <div className='d-none d-sm-block'>
                 <div className='topbar d-flex justify-content-around'>
                     <div className='topbar__contact d-flex'>              
@@ -80,7 +94,9 @@ export default function Topbar() {
                         <Link to='/cart'>
                          <p className="cart item mr-3"><i className="fa fa-shopping-cart fa-lg" aria-hidden="true"></i>{'hongquan'?<span className='index'>{state?.numCart != null?state.numCart:'0'}</span>:''} Giỏ hàng</p>
                         </Link>
-                        <p className="login item"><i className="fa fa-bell fa-lg"></i><span className='index'>1</span> Thông báo</p>
+                        <Link to='/notification'>
+                         <p className="login item"><i className="fa fa-bell fa-lg"></i><span className='index'>1</span> Thông báo</p>
+                        </Link>
                         {isLogout()}
                     </div>
                 </div>

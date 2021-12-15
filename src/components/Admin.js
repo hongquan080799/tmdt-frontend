@@ -12,6 +12,7 @@ import ViewAccount from './ViewAccountNV';
 import PhatsinhManagement from './PhatsinhManagement';
 import Thongke from './Thongke';
 import CtpsManagement from './CtpsManagement';
+import VoucherManagement from './VoucherManagerment';
 export default function Admin() {
     const {pageEnpoint, childEnpoint} = useParams()
     const history = useHistory()
@@ -78,6 +79,10 @@ export default function Admin() {
                 page = <Thongke />
                 break
             }
+            case 'voucher':{
+                page = <VoucherManagement search={search} />
+                break
+            }
             case 'phatsinh':{
                 if(childEnpoint == null)
                     page = <PhatsinhManagement />
@@ -118,6 +123,9 @@ export default function Admin() {
                 </p>
                 <p className={on?'dashboard__item dashboard__item-on':'dashboard__item'} onClick = {()=> history.push('/admin/phatsinh')}>
                     <span className="dashboard__item-icon"><i class="fas fa-clipboard-list"></i></span> {!on?'Incurred List':''}
+                </p>
+                <p className={on?'dashboard__item dashboard__item-on':'dashboard__item'} onClick = {()=> history.push('/admin/voucher')}>
+                    <span className="dashboard__item-icon"><i class="fas fa-ticket-alt"></i></span> {!on?'Voucher Management':''}
                 </p>
                 <p className={on?'dashboard__item dashboard__item-on':'dashboard__item'} onClick = {()=> history.push('/admin/thongke')}>
                     <span className="dashboard__item-icon"><i className="fas fa-chart-area"></i></span> {!on?'Chart':''}

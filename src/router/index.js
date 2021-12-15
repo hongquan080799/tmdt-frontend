@@ -9,6 +9,7 @@ import ViewAccount from '../views/ViewAccount'
 import ViewOrder from '../views/ViewOrder'
 import Restore from '../views/Restore'
 import Cart from '../views/Cart'
+import Notification from '../views/Notification'
 import OrderSuccessed from '../views/OrderSuccessed'
 export default function index() {
     return (
@@ -26,6 +27,7 @@ export default function index() {
                 <Route path="/viewOrder" component={ViewOrder} />
                 <Route path="/restore" component={Restore} />
                 <Route path="/orderSuccessed" component={OrderSuccessed} />
+                <Route path="/notification" component={Notification} />
             </Router>
         </div>
     )

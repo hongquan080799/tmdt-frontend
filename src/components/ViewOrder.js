@@ -15,6 +15,7 @@ const ViewOrder = ()=>{
         {
             try {
               const response = await donhangApi.getListOrderByKhachhang()
+              console.log(response)
               setDonhang(response)
             } catch (error) {
               console.log(error)
@@ -72,6 +73,14 @@ const ViewOrder = ()=>{
           setDonhang(response)
         }
       }
+      const getPayment = (httt)=>{
+        if(httt == 0)
+          return 'Cash'
+        else if(httt == 1)
+          return 'Paypal'
+        else if(httt == 2)
+          return 'Momo'
+      }
     return (
        <div className="container view-container">
            <div className="card view-order">
@@ -111,7 +120,7 @@ const ViewOrder = ()=>{
                           <h5 className="mb-2">OrderID : {dh?.madh}</h5>
                           <h6>Date: {dh?.ngaydat}</h6>
                           <h6>Total price : {dh?.tongtien} $</h6>
-                          <h6>Type of payment : {dh?.hinhthucthanhtoan == 1?'Tiền mặt':'Online'}</h6>
+                          <h6>Type of payment : {getPayment(dh?.hinhthucthanhtoan)}</h6>
                           <h6>Status of order: {getTinhtrang(dh?.trangthai)}</h6>
                           {dh?.trangthai==0?<button className="btn btn-outline-danger mt-3" type="button" onClick={()=>huyDon(dh?.madh, dh?.madhGhn)}>Cancel</button>:''}
                           <h5 className="mt-4">List of product</h5>

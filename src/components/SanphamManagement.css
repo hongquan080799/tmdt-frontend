@@ -14,6 +14,18 @@
     height: 80vh;
     overflow: scroll;
 }
+.ps__table{
+    width: 100%;
+    height: 38vh;
+    overflow: scroll;
+}
+.ps__row{
+    cursor: pointer;
+}
+.ps__row__select{
+    cursor: pointer;
+    background-color: #dbdbdb;
+}
 .card-header{
     display: flex;
     justify-content: space-between;

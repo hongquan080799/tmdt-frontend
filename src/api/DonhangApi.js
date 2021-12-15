@@ -15,6 +15,32 @@ export const order = async (donhang)=>{
     }
 }
 
+
+export const orderPaypal = async (donhang, payerId)=>{
+    const params = {
+        payerId
+    }
+    const url = "/donhang"
+    try {
+        const response = await axiosClient.post(url, donhang, {headers, params} )
+        return response
+    } catch (error) {
+        throw error
+    }
+}
+export const checkVoucher = async(voucherId)=>{
+    const params = {
+        voucherId
+    }
+    const url = "/checkVoucher"
+    try {
+        const res = await axiosClient.get(url, {headers, params})
+        return res
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 export const getListOrder = async()=>{
     const url = '/donhang'
     try {

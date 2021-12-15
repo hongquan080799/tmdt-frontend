@@ -219,13 +219,13 @@ export default function ProductDetail() {
                         <h6 className="mt-4"> - Thanh toán online</h6>
                         <img src="https://cdn.tgdd.vn/Files/2019/07/16/1179841/636629240000820088-760x367.jpg" style={{width:'80%'}}/>
                     </div>
-                    <div className="tab-pane container fade" id="menu2">
+                    <div className="tab-pane container fade" style={{color:'black'}} id="menu2">
                         <div className="row">
                             <div className="col-12 mb-4">
                                 {/* <p>0 Bình luận</p>
                                 <hr></hr> */}
-                                <div class="fb-comments" data-href={"https://localhost:8080/" + masp} data-width="" data-numposts="5"></div>
-                            </div>
+                                <div class="fb-comments" data-href={"https://developers.facebook.com/" + masp} data-width="" data-numposts="5"></div>
+                             </div>
                             {/* <div className="col-2 mt-4">
                                 <img src={quan} alt="picture" style={{width:"90%"}} className="rounded-circle"/>
                             </div>

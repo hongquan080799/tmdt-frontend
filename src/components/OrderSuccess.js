@@ -13,19 +13,30 @@ export default function OrderSuccess() {
     const search = useLocation().search
     useEffect(async()=>{
         if(state == null) 
-            history.push('/')
+            history.push('/')   
         else{
             if(search != null){
                 const extraData = new URLSearchParams(search).get('extraData');
                 setOrderConfirm(utf8.decode(base64.decode(extraData)))
-                const orderRequest = utf8.decode(base64.decode(extraData))
+                const orderRequest = JSON.parse(utf8.decode(base64.decode(extraData)))
                 // const ghnResponse = await ghnApi.getOrderGHN(order, state?.user, getShipAddressToGHN(), getPrice())
                 // customOrder.madhGhn = ghnResponse?.data?.order_code
-                await donhangApi.order(orderRequest)
-                alert('Order successfully !!!')
-                const myMessage = emailUtils.getMessageOrder(state?.user, orderRequest?.listSP, getShipAddress)
 
-                emailUtils.sendEmail(myMessage, state?.user)
+                if(orderRequest?.httt == 1){
+                    const payerId = new URLSearchParams(search).get('PayerID')
+                    await donhangApi.orderPaypal(orderRequest, payerId)
+                    alert('order successfully !')
+                    const myMessage = emailUtils.getMessageOrder(state?.user, orderRequest?.listSP, getShipAddress)
+                    emailUtils.sendEmail(myMessage, state?.user)
+                    return
+                }
+                if(orderRequest?.httt == 2){
+                    await donhangApi.order(orderRequest)
+                    alert('Order successfully !!!')
+                    const myMessage = emailUtils.getMessageOrder(state?.user, orderRequest?.listSP, getShipAddress)
+
+                    emailUtils.sendEmail(myMessage, state?.user)
+                }
             }
         }
     },[state])

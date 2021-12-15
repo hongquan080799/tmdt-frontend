@@ -6,6 +6,7 @@ import * as cartApi from '../api/GiohangApi'
 import * as userApi from '../api/UserApi'
 import * as donhangApi from '../api/DonhangApi'
 import * as emailUtils from '../utils/SendEmail'
+import * as paypalUtils from '../utils/PaypalUtils'
 import { getSignature } from '../utils/Algorithm'
 import Paypal from './Paypal'
 import {useHistory} from 'react-router-dom'
@@ -20,7 +21,9 @@ export default function Cart() {
     const [wards, setWards] = useState([])
     const [address, setAddress] = useState({})
     const [idAddress, setIdAddress] = useState({})
-    const [thanhtoan,setThanhtoan] = useState(1)
+    const [thanhtoan,setThanhtoan] = useState(0)
+    const [voucher, setVoucher] = useState()
+    const [discount, setDiscount] = useState(0)
     const [checkout,setCheckout] = useState(false);
     const getUserInfo = async ()=>{
         try {
@@ -117,7 +120,7 @@ export default function Cart() {
             if(sp.isCheck)
             price += sp.soluong * sp.gia - sp.soluong * sp.gia * sp.khuyenmai
         })
-        return price
+        return price - price * discount
     }
     const deleteCart = async (masp)=>{
         try {
@@ -277,10 +280,6 @@ export default function Cart() {
         alert('Payment failed !')
     }
     const handleSubmitOrder = async ()=>{
-        if(thanhtoan == 1 && !checkout){
-            alert('Please by via Paypal')
-            return
-        }
         const customsProduct = order?.listSP?.map(sp =>{
             if(sp.isCheck)
             return {
@@ -293,7 +292,15 @@ export default function Cart() {
         let customOrder = {
             listSP:customsProduct,
             httt:Number(thanhtoan),
-            diachi:getShipAddress()
+            diachi:getShipAddress(),
+        }
+        
+        if(discount > 0 )
+            customOrder.voucherId = voucher
+        if(thanhtoan == 1){
+            const res = await paypalUtils.getPayPalLinl(customOrder, getPrice());
+            window.location.href = res;
+            return
         }
         if(thanhtoan == 2){
             const orderId = 'DH' + new Date().getTime()
@@ -304,8 +311,8 @@ export default function Cart() {
         }
         try {
 
-            // const ghnResponse = await ghnApi.getOrderGHN(order, state?.user, getShipAddressToGHN(), getPrice())
-            // customOrder.madhGhn = ghnResponse?.data?.order_code
+            const ghnResponse = await ghnApi.getOrderGHN(order, state?.user, getShipAddressToGHN(), getPrice())
+            customOrder.madhGhn = ghnResponse?.data?.order_code
             await donhangApi.order(customOrder)
             alert('Order successfully !!!')
             const myMessage = emailUtils.getMessageOrder(state?.user, order?.listSP, getShipAddress)
@@ -315,6 +322,14 @@ export default function Cart() {
 
         } catch (error) {
             alert('Order failed !!! ' + error.data.message)
+            console.log(error)
+        }
+    }
+    const checkVoucher = async()=>{
+        try {
+            const res = await donhangApi.checkVoucher(voucher)
+            setDiscount(res.discount)
+        } catch (error) {
             console.log(error)
         }
     }
@@ -455,9 +470,16 @@ export default function Cart() {
                        
                     </div>
                     <div className="shopingCart_detail-totalPrice">
+                        <div class="input-group mb-3 mt-2">
+                            <input type="text" class="form-control" placeholder="Enter voucher code" onChange={(e)=> setVoucher(e.target.value)} value={voucher}/>
+                            <div class="input-group-append">
+                                <button onClick={checkVoucher} class="btn btn-info">Apply</button>
+                            </div>
+                        </div>
+                        
                          <div className="d-flex justify-content-between">
                             <p>Discount</p>
-                            <p className="text-danger">0 %</p>
+                            <p className="text-danger">{discount * 100} %</p>
                         </div>
                         <div className="d-flex justify-content-between">
                             <p>Temporary price</p>
@@ -527,15 +549,15 @@ export default function Cart() {
                                               <option value={2}>Momo</option>
                                             </select></td>
                                         </tr>
-                                        {thanhtoan == 1?<tr>
+                                        {/* {thanhtoan == 1?<tr>
                                             <Paypal paymentStatus={paymentStatus} tongtien = {getPrice()}/>
-                                        </tr>:''}
+                                        </tr>:''} */}
                                     </table>
 
                                   </div>
                                   <div className="modal-footer">
-                                    <button type="button" className="btn btn-secondary" data-dismiss="modal">Thoát</button>
-                                    <button type="button" className="btn btn-primary" onClick={handleSubmitOrder}>Xác nhận</button>
+                                    <button type="button" className="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                    <button type="button" className="btn btn-primary" onClick={handleSubmitOrder}>Confirm</button>
                                   </div>
                                 </div>
                               </div>

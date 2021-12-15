@@ -44,7 +44,6 @@ export default function Register() {
         const fileNameFirst = file?.name;
         const fileNameFinal = fileNameFirst?.replace(/ /g,'')
         var storageRef =  store.ref().child("images/"+fileNameFinal)
-        
         // const metadata = {
         //   contentType: 'image/jpeg'
         // };

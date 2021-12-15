@@ -91,8 +91,10 @@ export const getSignature = async(order, totalPrice, orderId)=>{
         let headers = {
             Authorization: 'Bearer ' + jwt
         }
-        
-        const res = await axiosClient.post('/donhang/getPayUrl',data, {headers})
+        let params = {
+            httt: 2
+        }
+        const res = await axiosClient.post('/donhang/getPayUrl',data, {headers, params})
         return res
     } catch (error) {
         throw error
